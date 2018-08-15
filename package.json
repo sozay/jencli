@@ -1,0 +1,25 @@
+{
+  "name": "jencli",
+  "version": "1.0.14",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "jencli": "./jencli.js"
+  },
+  "author": "serdar ozay",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "cheerio": "^1.0.0-rc.2",
+    "fs": "0.0.1-security",
+    "get-form-data": "^2.0.0",
+    "read": "^1.0.7",
+    "request": "^2.87.0",
+    "sleep": "^5.1.1",
+    "underscore": "^1.9.1",
+    "url": "^0.11.0",
+    "xml2js": "^0.4.19"
+  }
+}
