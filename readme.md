@@ -10,7 +10,7 @@ To open jenkins command line:
     $ jencli [username] [apiToken] [host]
 
 **apiToken**
-You can find api token under https://jenkinsUrl/user/cNumXXXXX/configure for each jenkins server. Since apiToken doesn't change, it is recommended to create sh or bat files for each jenkins to use jencli.
+You can find api token under https://jenkinsUrl/user/XXXXX/configure for each jenkins server. Since apiToken doesn't change, it is recommended to create sh or bat files for each jenkins to use jencli.
 
 **host**
 target Jenkins Url
