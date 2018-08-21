@@ -35,7 +35,8 @@ or you can use folder number rather than folder name. The folder number can be s
 
         $ last jobFullname or jobNumber
 
-**R**un a jenkins job
+**R**un a jenkins job.
+
 you can run the jobs which is listed with .*w*f extension. If the job needs parameters, it will be asked after run command.
 
     $ run jobFullname or jobNumber
