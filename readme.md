@@ -5,7 +5,7 @@
 
 ## Usage
 
-To open jenkins command line:
+To start it:
 
     $ jencli [username] [apiToken] [host]
 
@@ -31,8 +31,7 @@ or you can use folder number rather than folder name. The folder number can be s
 
     $ cd folderNumber
 
-**L**ast a jenkins job
-    you can get last executed job's parameter 
+**G**et last executed job's parameter 
 
         $ last jobFullname or jobNumber
 
@@ -41,22 +40,22 @@ you can run the jobs which is listed with .*w*f extension. If the job needs para
 
     $ run jobFullname or jobNumber
 
-**G**et info about a job
+**G**et console output of last build
 
     $ info jobName or jobNumber
 
-You can reach last job console output with using *info* command. If the job is still running you will get live output of the job
+If the job is still running you will get live output of the job
 
 
 
 ## Installation
 
-To use it, first you need to install nodejs on your machine. After it, download and then, go in code re directory.The following command is going to install in your machine.
+To use it, first you have to install nodejs on your machine. After it, download and then, go in code re directory.The following command is going to install in your machine.
 
     $ npm install -g
 
 
-If you don't already set, Do not forget to set your proxy for nodejs
+If you need, do not forget to set your proxy for nodejs
 
-    npm config set proxy 'http://C0XXXXX:xxxx@dia2.santanderuk.gs.corp:80'
-    npm config set https-proxy 'https://C0XXXXX:xxxx@dia2.santanderuk.gs.corp:80'
+    npm config set proxy 'http://username:xxxx@yourproxyaddress.com'
+    npm config set https-proxy 'https://username:xxxx@yourproxyaddress.com'
