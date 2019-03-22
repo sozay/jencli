@@ -22,8 +22,7 @@ jobsIndex = {};
 var jobs = [];
 var lastJob = "";
 var sleep = require('sleep');
-//user = "admin"
-//token = "da245750032f080e67bebe9e39d4bbdb";
+
 
 
 
@@ -63,6 +62,13 @@ function updateInnerUrl()
 
 function getPathUrl(){
   url = jenkinsHost;
+  path.forEach(function(folder){
+    url += "/job/"+folder;
+  })
+  return url;
+}
+function getPathUrlwithoutToken(){
+  url = jenkinsHostwithoutToken;
   path.forEach(function(folder){
     url += "/job/"+folder;
   })
@@ -450,7 +456,7 @@ function report(jobName,lastBuild,innerUrl,executer,callback)
 }
 
 function updateJobs(callback){
-  pathUrl = getPathUrl();
+  pathUrl = getPathUrlwithoutToken();
   requrl = pathUrl + "/api/xml";
   jobsNew =[]
 
@@ -458,7 +464,6 @@ function updateJobs(callback){
     {
       if(!err){
         xmlParser(body, function (err, result) {
-          //console.dir(result);
           if(result)
           {
             tempJobs = path.length == 0 ? result.hudson.job : result.folder.job;
@@ -473,6 +478,8 @@ function updateJobs(callback){
 
           }
         });
+      }else {
+        console.log(err);
       }
    });
 }
@@ -638,7 +645,7 @@ var cExecuter = function commandExecuter(err,commandstr)
   //console.log("new line")
 
 }
-
+var jenkinsUri;
 if(process.argv.length < 4)
 {
   console.log("Please enter username and jenkins host: jencli [cNumber] [apiToken] [host]");
@@ -656,15 +663,14 @@ if(process.argv.length < 4)
     }
     else if(index == 4)
     {
-      var jenkinsUri = url.parse(val);
+      jenkinsUri = url.parse(val);
       jenkinsHost = jenkinsUri.protocol+"//" + user + ":" + apiToken + "@" + jenkinsUri.host;
-      console.log(jenkinsHost);
+      jenkinsHostwithoutToken = jenkinsUri.protocol+"//" + jenkinsUri.host;
+      //console.log(jenkinsHost);
 
-      //jenkinsHost = 'https://C0254853:814d83e9cd53eac8ed3e094a33935b04@alm-jenkins.almuk.santanderuk.corp'
-      //jenkinsHost = 'http://'+user+':'+token+'@localhost:49001'
     }
   });
-  req(xmlApi(jenkinsHost),function(err, response, body)
+  req(xmlApi(jenkinsHostwithoutToken),function(err, response, body)
   {
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
       if(!err){
